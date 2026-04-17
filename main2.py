@@ -4,7 +4,6 @@ import dotenv
 import os
 from datetime import datetime
 
-
 # Load environment variables -- dont need this
 # dotenv.load_dotenv()
 # api_key = os.getenv("api_key")
@@ -13,7 +12,6 @@ from datetime import datetime
 HEADERS = {
     'User-Agent': '(myweatherapp.com, contact@email.com)'
 }
-
 class WeatherRecord:
     def __init__(self, date, temperature, humidity, windSpeed, rainfall):
         self.date = date
@@ -76,3 +74,11 @@ with open('weather_data.txt', 'r') as file:
         total_temp += float(record.temperature)
     avg_temp = total_temp / len(slit_list)
     print(f"Average Temperature: {avg_temp:.2f}°F") 
+
+    # Use the map for quick lookup (Efficient Searching)
+    search_date = input("Enter a date to search for (e.g., December 5th): ")
+    if search_date in weather_map:
+        found_record = weather_map[search_date]
+        print(f"Lookup Success! Date: {found_record.date}, Temp: {found_record.temperature}°F")
+    else:
+        print(f"Lookup Failed! No record found for date: {search_date}")
