@@ -8,7 +8,7 @@ from datetime import datetime
 # dotenv.load_dotenv()
 # api_key = os.getenv("api_key")
 
-# Configuration for NWS API
+# Configuration for National weather service  API
 HEADERS = {
     'User-Agent': '(myweatherapp.com, contact@email.com)'
 }
@@ -83,12 +83,14 @@ if __name__ == "__main__":
 
     # i need to do this..Map (required) → key = date, value = WeatherRecord
     today.add_record(today)
+    # add more records to the list and map
     record1 = WeatherRecord("December 4th", 80, 60, 90, 0)
     record2 = WeatherRecord("December 5th", 65, 45, 10, 5)
     record3 = WeatherRecord("December 6th", 70, 50, 20, 1)
     record4 = WeatherRecord("December 7th", 85, 70, 15, 0)
     record5 = WeatherRecord("December 8th", 60, 40, 5, 10)
 
+    # Add records to the List and Map
     for rec in [record1, record2, record3, record4, record5]:
         today.add_record(rec)
   
@@ -100,8 +102,6 @@ if __name__ == "__main__":
         # need more than memory address, need to print the actual record
         # print(f"{rec}: {today.weather_map[rec]}")
         print(f"{rec}: {today.weather_map[rec].temperature}°F")
-
-    # Demonstrating retrieval from the list
 
 
     #  Use the List to calculate average temperature
