@@ -1,0 +1,7 @@
+# Environment variables (sensitive data)
+.env
+
+# Virtual environments (local-only dependencies)
+venv/
+.venv/
+env/
