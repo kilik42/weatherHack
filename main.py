@@ -15,7 +15,8 @@ HEADERS = {
 
 class WeatherRecord:
     def __init__(self, date, temperature, humidity, windSpeed, rainfall):
-        self.date = date
+        #self.date = date # need current date in the format MM-DD-YYYY, but for testing purposes
+        self.date = date.now().strftime("%B %dth") # this is just for testing, it will always return the current date in the format "December 3rd"
         self.state = "IL"
         self.temperature = temperature
         self.humidity = humidity
@@ -145,7 +146,7 @@ if __name__ == "__main__":
         print(f"\nAverage Temperature: {avg_temp:.2f}°F")
 
     elif user_input == "2":
-        date_input = input("Enter a date (MM-DD-YYYY): ") # this needs tweaking 
+        date_input = input("Enter a date (MM-DD-YYYY): ") # this needs tweaking to match the date format used in the records, currently it's "December 5th" 
         if date_input in today.weather_map:
             found_record = today.weather_map[date_input] # this is where the date format needs to match the one used in the records, currently it's "December 5th"
             print(f"Lookup Success! Date: {found_record.date}, Temp: {found_record.temperature}°F")
