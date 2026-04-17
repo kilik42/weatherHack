@@ -137,13 +137,17 @@ if __name__ == "__main__":
     user_input = input("\nEnter 1 for Weather Statistics or 2 for Date Lookup: ")
     if user_input == "1":
         # Display weather statistics (e.g., average temperature)
+        # get the average temperature from the list of records get total first then divide by the number of records
         total_temp = sum(rec.temperature for rec in today.weather_list)
+        # calculate average temperature
         avg_temp = total_temp / len(today.weather_list)
+        # print the average temperature with 2 decimal places
         print(f"\nAverage Temperature: {avg_temp:.2f}°F")
+
     elif user_input == "2":
-        date_input = input("Enter a date (MM-DD-YYYY): ")
+        date_input = input("Enter a date (MM-DD-YYYY): ") # this needs tweaking 
         if date_input in today.weather_map:
-            found_record = today.weather_map[date_input]
+            found_record = today.weather_map[date_input] # this is where the date format needs to match the one used in the records, currently it's "December 5th"
             print(f"Lookup Success! Date: {found_record.date}, Temp: {found_record.temperature}°F")
         else:
             print(f"Lookup Failed! No record found for date: {date_input}")
