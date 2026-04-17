@@ -75,10 +75,20 @@ with open('weather_data.txt', 'r') as file:
     avg_temp = total_temp / len(slit_list)
     print(f"Average Temperature: {avg_temp:.2f}°F") 
 
+    # join the list of WeatherRecord objects to create a new list of dictionaries for easier access
+    dict_list = []
+    for record in slit_list:
+        dict_list.append(record.item_map)
+    # print the list of dictionaries to verify it was created correctly
+    for record in dict_list:
+        # need columns for date, temperature, humidity, windSpeed, rainfall
+        print(f"{record['date']}\t{record['temperature']}\t{record['humidity']}\t{record['windSpeed']}\t{record['rainfall']}")
+        # print(record)   
+
     # Use the map for quick lookup (Efficient Searching)
-    search_date = input("Enter a date to search for (e.g., December 5th): ")
-    if search_date in weather_map:
-        found_record = weather_map[search_date]
-        print(f"Lookup Success! Date: {found_record.date}, Temp: {found_record.temperature}°F")
-    else:
-        print(f"Lookup Failed! No record found for date: {search_date}")
+    # search_date = input("Enter a date to search for (e.g., December 5th): ")
+    # if search_date in weather_map:
+    #     found_record = weather_map[search_date]
+    #     print(f"Lookup Success! Date: {found_record.date}, Temp: {found_record.temperature}°F")
+    # else:
+    #     print(f"Lookup Failed! No record found for date: {search_date}")
