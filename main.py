@@ -16,7 +16,7 @@ HEADERS = {
 class WeatherRecord:
     def __init__(self, date, temperature, humidity, windSpeed, rainfall):
         #self.date = date # need current date in the format MM-DD-YYYY, but for testing purposes
-        self.date = date.now().strftime("%B %dth") # this is just for testing, it will always return the current date in the format "December 3rd"
+        self.date = datetime.today()# this is just for testing, it will always return the current date in the format "December 3rd"
         self.state = "IL"
         self.temperature = temperature
         self.humidity = humidity
