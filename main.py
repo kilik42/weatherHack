@@ -32,7 +32,7 @@ class WeatherRecord:
             "rainfall": rainfall
         }   
 
-        # API Logic
+        # API endpoint for NWS alerts by state
         url = f'https://api.weather.gov/alerts/active?area={self.state}'
         
         try:
