@@ -29,10 +29,13 @@ dotenv.load_dotenv()
 api_key = os.getenv("api_key")
 
 
+state = "IL"
+
 # database_url = os.getenv("database_url")
 class WeatherRecord:
   def __init__(self, date, temperature, humidity,windSpeed,rainfall):
     self.date = date
+    self.state = "IL"
     self.temperature = temperature
     self.humidity = humidity
     self.windSpeed = windSpeed
@@ -46,16 +49,37 @@ class WeatherRecord:
       "rainfall": rainfall
     }   
 
+    response = requests.get(f"http://api.openweathermap.org/data/2.5/weather?q={state}&appid={api_key}&units=metric")
+    if response.status_code == 200:
+      data = response.json()
+      self.temperature = data['main']['temp']
+      self.humidity = data['main']['humidity']
+      self.windSpeed = data['wind']['speed']
+      self.rainfall = data.get('rain', {}).get('1h', 0)  # Get rainfall in the last hour, default to 0 if not available
+    else:
+      print("Failed to retrieve weather data from API.")    
+
+
 # demo usage
-store = []
-record1 = WeatherRecord("December 3rd", 76,56,98,2)
-record2 = WeatherRecord("December 4th", 80,60,90,0)
-store.append(record1)
-store.append(record2)       
+# store = []
+# record1 = WeatherRecord("December 3rd", 76,56,98,2)
+# record2 = WeatherRecord("December 4th", 80,60,90,0)
+# store.append(record1)
+# store.append(record2)       
 
 
-today = WeatherRecord("December 3rd", 76,56,98,2)
-print(today.temperature)
+# today = WeatherRecord("December 3rd", 76,56,98,2)
+# print(today.temperature)
+
+# if today.temperature > 30:
+#   print("It's hot today!")
+# else:  print("It's not hot today.")
+
+if __name__ == "__main__":
+    today = WeatherRecord("December 3rd", 76,56,98,2)
+    print(today.temperature)    
+
+
 
 # class WeatherAPI:
 #     def __init__(self, api_key):
