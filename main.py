@@ -48,7 +48,7 @@ class WeatherRecord:
                 response_data = json.dumps(data, indent=2)
                 print(f"Received data: {response_data[:500]}...")  # Print first 500 chars of response for verification
                 
-                # If you were using OpenWeatherMap (uncomment if needed):
+                # If we were using OpenWeatherMap:
                 # data = response.json()
                 # self.temperature = data['main']['temp']
                 # self.humidity = data['main']['humidity']
@@ -79,7 +79,7 @@ class WeatherRecord:
 
 if __name__ == "__main__":
     # Create a record
-    today = WeatherRecord("December 3rd", 76, 56, 98, 2)
+    today = WeatherRecord("December 3rd", 76, 56, 98, 2) #test data, not from API
 
     # i need to do this..Map (required) → key = date, value = WeatherRecord
     today.add_record(today)
