@@ -104,12 +104,13 @@ if __name__ == "__main__":
     # Demonstrating retrieval from the list
 
 
-    # Example 1: Use the List to calculate average temperature
+    #  Use the List to calculate average temperature
+
     total_temp = sum(rec.temperature for rec in today.weather_list)
     avg_temp = total_temp / len(today.weather_list)
     print(f"\nAverage Temperature: {avg_temp:.2f}°F")
 
-    # Example 2: Use the Map for quick lookup (Efficient Searching)
+    # Use the Map for quick lookup (Efficient Searching)
     search_date = "December 5th"
     if search_date in today.weather_map:
         found_record = today.weather_map[search_date]
@@ -128,6 +129,7 @@ if __name__ == "__main__":
     else:
         print("Status: It's chilly today.")
     
+    #taken from the problem statement
     # After loading all records, the application reads an integer from standard input, the user enters either 1 or 2:
     # If the user enters 1 → The application displays weather statistics (Explained in Step 4)
     # If the user enters 2 → The application searchs for a specific date (Explained is Step 5)
