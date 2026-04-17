@@ -2,7 +2,7 @@ import requests
 import json
 import dotenv
 import os
-
+import datetime
 
 # #Data Analysis: The system should compute summary statistics across all weather records, such as temperature trends, rainfall totals, and extreme conditions.
 
@@ -24,8 +24,38 @@ import os
 
 # If any of the dates is invalid, that entire line should be igonred.
 
+# how to load api key from .env file
+dotenv.load_dotenv()
+api_key = os.getenv("api_key")
 
 
+# database_url = os.getenv("database_url")
+class WeatherRecord:
+  def __init__(self, date, temperature, humidity,windSpeed,rainfall):
+    self.date = date
+    self.temperature = temperature
+    self.humidity = humidity
+    self.windSpeed = windSpeed
+    self.rainfall = rainfall
+    self.item_list = [date, temperature, humidity, windSpeed, rainfall]
+    self.item_map = {
+      "date": date,
+      "temperature": temperature,
+      "humidity": humidity,
+      "windSpeed": windSpeed,
+      "rainfall": rainfall
+    }   
+
+# demo usage
+store = []
+record1 = WeatherRecord("December 3rd", 76,56,98,2)
+record2 = WeatherRecord("December 4th", 80,60,90,0)
+store.append(record1)
+store.append(record2)       
+
+
+today = WeatherRecord("December 3rd", 76,56,98,2)
+print(today.temperature)
 
 # class WeatherAPI:
 #     def __init__(self, api_key):
