@@ -56,3 +56,23 @@ with open('weather_data.txt', 'r') as file:
         # i want to print the list of WeatherRecord objects to verify it was created correctly .. no memory data
     for record in slit_list:
         print(record.item_map)
+
+    #now i want to create a map of date to WeatherRecord object, so i will create a dictionary and use the date as the key and the WeatherRecord object as the value
+    weather_map = {}
+    for record in slit_list:
+        weather_map[record.date] = record
+    # print the map to verify it was created correctly
+    for date, record in weather_map.items():
+        print(f"{date}: {record.item_map}")
+
+    #create a column for date, temperature, humidity, windSpeed, rainfall
+    print("Date\tTemperature\tHumidity\tWind Speed\tRainfall")
+    for record in slit_list:
+        print(f"{record.date}\t{record.temperature}\t{record.humidity}\t{record.windSpeed}\t{record.rainfall}")
+    
+    # Use the list to calculate average temperature
+    total_temp = 0
+    for record in slit_list:
+        total_temp += float(record.temperature)
+    avg_temp = total_temp / len(slit_list)
+    print(f"Average Temperature: {avg_temp:.2f}°F") 
