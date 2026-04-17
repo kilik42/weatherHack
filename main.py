@@ -17,7 +17,6 @@ HEADERS = {
 class WeatherRecord:
     def __init__(self, date, temperature, humidity, windSpeed, rainfall):
         self.date = date
-        self.state = "IL"
         self.temperature = temperature
         self.humidity = humidity
         self.windSpeed = windSpeed
@@ -34,6 +33,7 @@ class WeatherRecord:
         }   
 
         # API Logic
-        with open('weather_data.txt', 'r') as file:
-    content = file.read()
-    print(content)
+        
+with open('weather_data.txt', 'r') as file:
+    for line in file:
+        print(line.rstrip().split(",")[0])
